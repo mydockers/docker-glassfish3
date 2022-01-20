@@ -1,13 +1,13 @@
-FROM duruu/java:7
+FROM openjdk:7u221-jre
 
-MAINTAINER Ganduruu.B <mr.jojo8@gmail.com>
+MAINTAINER FANTINEL L <leandrofantinel@gmail.com>
 
-RUN apt-get update && \
-    apt-get install -y wget unzip pwgen expect && \
-    wget http://download.oracle.com/glassfish/3.1.2/release/glassfish-3.1.2.zip && \
-    unzip glassfish-3.1.2.zip -d /opt && \
-    rm glassfish-3.1.2.zip && \
-    apt-get clean && \
+RUN apt update && apt -y upgrade\
+    apt install -y wget unzip pwgen expect && \
+    wget http://download.oracle.com/glassfish/3.1.2.2/release/glassfish-3.1.2.2.zip && \
+    unzip glassfish-3.1.2.2.zip -d /opt && \
+    rm glassfish-3.1.2.2.zip && \
+    apt autoremove && apt autoclean && apt clean && \
     rm -rf /var/lib/apt/lists/*
 
 ENV PATH /opt/glassfish3/bin:$PATH
